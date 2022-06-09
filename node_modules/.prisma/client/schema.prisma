@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+ // create card model
+model Card {
+  id          Int      @id @default(autoincrement())   // 4
+  createdAt   DateTime @default(now())  // 5
+  updatedAt   DateTime @default(now())  // 5
+  question    String
+  answer      String
+}
+  
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+}
